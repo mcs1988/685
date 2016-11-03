@@ -1,0 +1,177 @@
+fileFormatVersion: 2
+guid: b2c330a66a083d64db918ce8f95fcb2d
+timeCreated: 1478062209
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: BezierCircle
+    100002: BezierCircle.001
+    100004: BezierCircle.002
+    100006: BezierCircle.003
+    100008: BezierCircle.004
+    100010: BezierCircle.005
+    100012: Camera
+    100014: Cube
+    100016: Cube.001
+    100018: Cube.002
+    100020: Cylinder
+    100022: Grid
+    100024: NurbsCurve
+    100026: Sphere
+    100028: Torus
+    100030: Torus.001
+    100032: Torus.002
+    100034: Torus.003
+    100036: //RootNode
+    400000: BezierCircle
+    400002: BezierCircle.001
+    400004: BezierCircle.002
+    400006: BezierCircle.003
+    400008: BezierCircle.004
+    400010: BezierCircle.005
+    400012: Camera
+    400014: Cube
+    400016: Cube.001
+    400018: Cube.002
+    400020: Cylinder
+    400022: Grid
+    400024: NurbsCurve
+    400026: Sphere
+    400028: Torus
+    400030: Torus.001
+    400032: Torus.002
+    400034: Torus.003
+    400036: //RootNode
+    2300000: BezierCircle
+    2300002: BezierCircle.001
+    2300004: BezierCircle.002
+    2300006: BezierCircle.003
+    2300008: BezierCircle.004
+    2300010: BezierCircle.005
+    2300012: Cube
+    2300014: Cube.001
+    2300016: Cube.002
+    2300018: Cylinder
+    2300020: Grid
+    2300022: NurbsCurve
+    2300024: Sphere
+    2300026: Torus
+    2300028: Torus.001
+    2300030: Torus.002
+    2300032: Torus.003
+    3300000: BezierCircle
+    3300002: BezierCircle.001
+    3300004: BezierCircle.002
+    3300006: BezierCircle.003
+    3300008: BezierCircle.004
+    3300010: BezierCircle.005
+    3300012: Cube
+    3300014: Cube.001
+    3300016: Cube.002
+    3300018: Cylinder
+    3300020: Grid
+    3300022: NurbsCurve
+    3300024: Sphere
+    3300026: Torus
+    3300028: Torus.001
+    3300030: Torus.002
+    3300032: Torus.003
+    4300000: Cube.002
+    4300002: Grid
+    4300004: BezierCircle.005
+    4300006: BezierCircle.004
+    4300008: BezierCircle.003
+    4300010: BezierCircle.002
+    4300012: BezierCircle.001
+    4300014: BezierCircle
+    4300016: Cylinder
+    4300018: Sphere
+    4300020: Torus.003
+    4300022: Torus.002
+    4300024: Torus.001
+    4300026: Torus
+    4300028: Cube
+    4300030: NurbsCurve
+    4300032: Cube.001
+    6400000: BezierCircle
+    6400002: BezierCircle.001
+    6400004: BezierCircle.002
+    6400006: BezierCircle.003
+    6400008: BezierCircle.004
+    6400010: BezierCircle.005
+    6400012: Cube
+    6400014: Cube.001
+    6400016: Cube.002
+    6400018: Cylinder
+    6400020: Grid
+    6400022: NurbsCurve
+    6400024: Sphere
+    6400026: Torus
+    6400028: Torus.001
+    6400030: Torus.002
+    6400032: Torus.003
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
