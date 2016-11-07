@@ -5,7 +5,7 @@ public class MoveOnEdgeCursor : MonoBehaviour {
 
 	float mouseSens = 0.1f;
 	Vector3 lastPosition;
-	public int boundary = 200;
+	public int boundary = 50;
     public int neutralSpeed;
     public int rightClickSpeed;
 	int speed = 50;
@@ -43,25 +43,23 @@ public class MoveOnEdgeCursor : MonoBehaviour {
 			transform.Translate (-delta.x * mouseSens, -delta.y * mouseSens, 0);
 			lastPosition = Input.mousePosition;
 		}
-                
 
-        
-           
+		if (!Input.GetMouseButton (2)) {
+			if (Input.mousePosition.x > theScreenWidth - boundary) {
+				transform.position = new Vector3 (transform.position.x + (speed * Time.deltaTime), transform.position.y, transform.position.z);
+			}
 
-             if (Input.mousePosition.x > theScreenWidth - boundary) {
-			transform.position = new Vector3 (transform.position.x + (speed * Time.deltaTime), transform.position.y, transform.position.z);
-		}
+			if (Input.mousePosition.x < boundary) {
+				transform.position = new Vector3 (transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
+			}
 
-		if (Input.mousePosition.x < boundary) {
-			transform.position = new Vector3 (transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
-		}
+			if (Input.mousePosition.y > theScreenHeight - boundary) {
+				transform.position = new Vector3 (transform.position.x, transform.position.y + (speed * Time.deltaTime), transform.position.z);
+			}
 
-		if (Input.mousePosition.y > theScreenHeight - boundary) {
-			transform.position = new Vector3 (transform.position.x, transform.position.y + (speed * Time.deltaTime), transform.position.z);
-		}
-
-		if (Input.mousePosition.y < boundary) {
-			transform.position = new Vector3 (transform.position.x, transform.position.y - (speed * Time.deltaTime), transform.position.z);
+			if (Input.mousePosition.y < boundary) {
+				transform.position = new Vector3 (transform.position.x, transform.position.y - (speed * Time.deltaTime), transform.position.z);
+			}
 		}
 
 			

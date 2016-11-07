@@ -26,29 +26,69 @@ public class MoveToClickPoint : MonoBehaviour {
 		myTransform = transform;   // cache transform to improve performance
 		destinationPosition = myTransform.position; // initialize destinationPosition
 		agent = gameObject.GetComponent<NavMeshAgent>();
+		//agent.updatePosition = false;
+		//agent.updateRotation = false;
 		changeTruckColor (Color.green);
     }
 
-//	void Update()
-//	{
+	void Update()
+	{
+		if (canMove) {
+			if (Input.GetMouseButtonDown (0)) {
+				int layerMask = 1 << 8;
+				layerMask = ~layerMask;
+
+				Ray screenRay = Camera.main.ScreenPointToRay (Input.mousePosition);
+
+				RaycastHit hit;
+
+				if (Physics.Raycast (screenRay, out hit, Mathf.Infinity, layerMask)) {
+					agent.destination = hit.point;
+				}
+			}
+		}
+	}
+
+//	void Update () {
 //		if (canMove) {
-//			if (Input.GetMouseButtonDown (0)) {
+//			// will move player to clicked point
+//			if (Input.GetMouseButtonDown (0) && GUIUtility.hotControl == 0) {
+//				// if some point clicked...
+//				Plane playerPlane = new Plane (Vector3.up, myTransform.position);
+//				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+//				RaycastHit hitdist;
 //				int layerMask = 1 << 8;
 //				layerMask = ~layerMask;
-//
 //				Ray screenRay = Camera.main.ScreenPointToRay (Input.mousePosition);
-//
 //				RaycastHit hit;
-//
-//				if (Physics.Raycast (screenRay, out hit, Mathf.Infinity, layerMask)) {
-//					agent.destination = hit.point;
-//				}
-//			}
-//
-//			if (Input.GetKeyDown (KeyCode.D)) {
-//				DeployTruck ();
+//				if (Physics.Raycast (screenRay, out hitdist, Mathf.Infinity, layerMask)) {
+//					// set destination to the point clicked
+//					destinationPosition = hitdist.point;
+//					//agent.destination = hitdist.point;
+//				}//end nested if
+//				Debug.Log ("CLICKED!");
+//			}//end if
+//			// calculate the current target direction
+//			Vector3 destDir = destinationPosition - myTransform.position;
+//			Debug.Log ("dest dir = " + destDir + "    dest pos = " + destinationPosition + "     trans pos = " + myTransform.position);
+//			destDir.y = 0; // make it strictly horizontal to avoid object tilting
+//			destinationDistance = destDir.magnitude; // get the horizontal distance
+//			// object doesn't anything if below stopDistance:
+//			if (destinationDistance >= stopDistance) { // if farther than stopDistance...
+//				isMoving = true;
+//				changeTruckColor(Color.yellow);
+//				targetRotation = Quaternion.LookRotation (destDir); // update target rotation...
+//				// turn gradually to target direction each frame:
+//				myTransform.rotation = Quaternion.RotateTowards (myTransform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
+//				// move in its local forward direction (Translate default):
+//				myTransform.Translate (Vector3.forward * 25f * Time.deltaTime);  // move in forward direction 
+//			}//end if
+//			else{
+//				isMoving = false;
+//				changeTruckColor(Color.green);
 //			}
 //		}
+<<<<<<< HEAD
 //	}
 
 	void Update () {
@@ -106,6 +146,17 @@ public class MoveToClickPoint : MonoBehaviour {
 			changeTruckColor (Color.green);
 		}
 	}//end update
+=======
+//		
+//		if (Input.GetKeyDown (KeyCode.D) && !isMoving) {
+//			canMove = !canMove;
+//			changeTruckColor (Color.red);
+//		} else if (Input.GetKeyDown (KeyCode.D) && !canMove) {
+//			canMove = !canMove;
+//			changeTruckColor (Color.green);
+//		}
+//	}//end update
+>>>>>>> origin/master
 
 	void changeTruckColor(Color color)
 	{
