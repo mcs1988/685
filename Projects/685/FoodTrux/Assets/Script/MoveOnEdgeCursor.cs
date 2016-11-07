@@ -5,7 +5,9 @@ public class MoveOnEdgeCursor : MonoBehaviour {
 
 	float mouseSens = 0.1f;
 	Vector3 lastPosition;
-	int boundary = 50;
+	public int boundary = 200;
+    public int neutralSpeed;
+    public int rightClickSpeed;
 	int speed = 50;
 
 	int theScreenWidth;
@@ -19,8 +21,20 @@ public class MoveOnEdgeCursor : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		// If Middle Button is clicked Camera will move.
-		if (Input.GetMouseButtonDown (2)) {
+
+        // Speed Determined depending if rightMouseButton clicked
+        if (Input.GetMouseButton(1))
+        {
+            speed = rightClickSpeed;
+            Debug.Log("Pressed left click.");
+        }
+        else
+        {
+            speed = neutralSpeed;
+         }
+
+        // If Middle Button is clicked Camera will move.
+        if (Input.GetMouseButtonDown (2)) {
 			lastPosition = Input.mousePosition;
 		}
 
@@ -29,8 +43,12 @@ public class MoveOnEdgeCursor : MonoBehaviour {
 			transform.Translate (-delta.x * mouseSens, -delta.y * mouseSens, 0);
 			lastPosition = Input.mousePosition;
 		}
+                
 
-		if (Input.mousePosition.x > theScreenWidth - boundary) {
+        
+           
+
+             if (Input.mousePosition.x > theScreenWidth - boundary) {
 			transform.position = new Vector3 (transform.position.x + (speed * Time.deltaTime), transform.position.y, transform.position.z);
 		}
 
@@ -50,8 +68,8 @@ public class MoveOnEdgeCursor : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		GUI.Box (new Rect ((Screen.width / 2) - 140, 5, 200, 25), "Mouse Position = " + Input.mousePosition);
-		GUI.Box (new Rect ((Screen.width / 2) - 70, Screen.height - 30, 140, 25), "Mouse X = " + Input.mousePosition.x);
-		GUI.Box (new Rect (5, (Screen.width / 2) - 12, 140, 25), "Mouse Y = " + Input.mousePosition.y);
+		//GUI.Box (new Rect ((Screen.width / 2) - 140, 5, 200, 25), "Mouse Position = " + Input.mousePosition);
+        GUI.Box (new Rect ((Screen.width / 2) - 70, Screen.height - 30, 140, 25), "Mouse X = " + Input.mousePosition.x);
+        GUI.Box (new Rect ((Screen.width / 2) - 140, 5, 200, 25), "Mouse Y = " + Input.mousePosition.y);
 	}
 }
