@@ -66,8 +66,21 @@ public class MoveToClickPoint : MonoBehaviour {
 				changeTruckColor(Color.green);
 			}
 		}
+        else
+        {
+            //robs kustom editz
+            creditTimer += 1;
 
-		if (Input.GetKeyDown (KeyCode.D) && !isMoving) {
+            if (creditTimer == 59)
+            {
+
+                creditTimer = 0;
+                GameObject.Find("homeBase").GetComponent<MoneyHandler>().credits += 1;
+            }
+        }
+
+
+        if (Input.GetKeyDown (KeyCode.D) && !isMoving) {
 			canMove = !canMove;
 			changeTruckColor (Color.red);
 		} else if (Input.GetKeyDown (KeyCode.D) && !canMove) {
