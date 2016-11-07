@@ -180,9 +180,9 @@ GameObject:
   - 33: {fileID: 65236189}
   - 23: {fileID: 65236188}
   - 64: {fileID: 65236187}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube.002
-  m_TagString: Untagged
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -262,9 +262,9 @@ GameObject:
   - 33: {fileID: 107842339}
   - 23: {fileID: 107842338}
   - 64: {fileID: 107842337}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Torus.000
-  m_TagString: Untagged
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -478,9 +478,9 @@ GameObject:
   - 33: {fileID: 384297373}
   - 23: {fileID: 384297372}
   - 64: {fileID: 384297371}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -639,9 +639,9 @@ GameObject:
   - 33: {fileID: 678504202}
   - 23: {fileID: 678504201}
   - 64: {fileID: 678504200}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Torus.001
-  m_TagString: Untagged
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -721,9 +721,9 @@ GameObject:
   - 33: {fileID: 719451681}
   - 23: {fileID: 719451680}
   - 64: {fileID: 719451679}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube.001
-  m_TagString: Untagged
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -800,9 +800,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 879502612}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: weiner3
-  m_TagString: Untagged
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -955,7 +955,7 @@ GameObject:
   - 54: {fileID: 976987786}
   - 195: {fileID: 976987785}
   - 114: {fileID: 976987784}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Truck
   m_Icon: {fileID: 0}
@@ -1039,9 +1039,9 @@ GameObject:
   - 33: {fileID: 1004320302}
   - 23: {fileID: 1004320301}
   - 64: {fileID: 1004320300}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Torus.002
-  m_TagString: Untagged
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1121,9 +1121,9 @@ GameObject:
   - 33: {fileID: 1104813044}
   - 23: {fileID: 1104813043}
   - 64: {fileID: 1104813042}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1394,9 +1394,9 @@ GameObject:
   - 33: {fileID: 1213493389}
   - 23: {fileID: 1213493388}
   - 64: {fileID: 1213493387}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grid
-  m_TagString: Untagged
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1672,9 +1672,9 @@ GameObject:
   - 33: {fileID: 1765549974}
   - 23: {fileID: 1765549973}
   - 64: {fileID: 1765549972}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1947,9 +1947,9 @@ GameObject:
   - 33: {fileID: 1864364199}
   - 23: {fileID: 1864364198}
   - 64: {fileID: 1864364197}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Torus.004
-  m_TagString: Untagged
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

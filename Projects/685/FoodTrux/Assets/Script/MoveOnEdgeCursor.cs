@@ -26,7 +26,6 @@ public class MoveOnEdgeCursor : MonoBehaviour {
         if (Input.GetMouseButton(1))
         {
             speed = rightClickSpeed;
-            Debug.Log("Pressed left click.");
         }
         else
         {
@@ -61,13 +60,11 @@ public class MoveOnEdgeCursor : MonoBehaviour {
 				transform.position = new Vector3 (transform.position.x, transform.position.y - (speed * Time.deltaTime), transform.position.z);
 			}
 		}
-
-			
 	}
 
 	void OnGUI () {
-		//GUI.Box (new Rect ((Screen.width / 2) - 140, 5, 200, 25), "Mouse Position = " + Input.mousePosition);
-        GUI.Box (new Rect ((Screen.width / 2) - 70, Screen.height - 30, 140, 25), "Mouse X = " + Input.mousePosition.x);
-        GUI.Box (new Rect ((Screen.width / 2) - 140, 5, 200, 25), "Mouse Y = " + Input.mousePosition.y);
+		GUI.Box (new Rect ((Screen.width / 2) - 140, 5, 220, 25), "Mouse Position = " + Input.mousePosition);
+        GUI.Box (new Rect ((Screen.width / 2) - 200, Screen.height - 30, 140, 25), "Mouse X = " + Input.mousePosition.x);
+		GUI.Box (new Rect ((Screen.width / 2) - 50, Screen.height - 30, 140, 25), "Mouse Y = " + Input.mousePosition.y);
 	}
 }
