@@ -18,9 +18,9 @@ public class MoveToClickPoint : MonoBehaviour {
 	public float stopDistance = 3f; // stop moving when closer to stopDistance
 
     int creditTimer = 0; //Temp Variable to Simulate Income
-   
 
-	private Quaternion targetRotation;
+
+    private Quaternion targetRotation;
 
 	void Start () 
 	{
@@ -34,41 +34,54 @@ public class MoveToClickPoint : MonoBehaviour {
 
 	void Update()
 	{
-		if (canMove) {
-			if (Input.GetMouseButtonDown (0)) {
 
-				Ray screenRay = Camera.main.ScreenPointToRay (Input.mousePosition);
 
-				RaycastHit hit;
-				if (Physics.Raycast (screenRay, out hit, Mathf.Infinity)) {
+        if (canMove) {
+            if (Input.GetMouseButtonDown(0)) {
 
-					Debug.Log ("hit collider tag = " + hit.collider.tag);
-					if(!hit.collider.tag.Equals("Truck")){
-						isMoving = true;
-						changeTruckColor (Color.yellow);
-						agent.destination = hit.point;
-					}
-				}
-			}
+                Ray screenRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-			if (agent.nextPosition == agent.destination && agent.velocity == new Vector3(0, 0, 0)) {
-				isMoving = false;
-				changeTruckColor(Color.green);
-			}
-		}
+                RaycastHit hit;
+                if (Physics.Raycast(screenRay, out hit, Mathf.Infinity)) {
+
+                    Debug.Log("hit collider tag = " + hit.collider.tag);
+                    if (!hit.collider.tag.Equals("Truck")) {
+                        isMoving = true;
+                        changeTruckColor(Color.yellow);
+                        agent.destination = hit.point;
+                    }
+                }
+            }
+
+            if (agent.nextPosition == agent.destination && agent.velocity == new Vector3(0, 0, 0)) {
+                isMoving = false;
+                changeTruckColor(Color.green);
+            }
+        }
         else
         {
             //robs kustom editz
-            creditTimer += 1;
-
-            if (creditTimer == 59)
+            GameObject[] customers = GameObject.FindGameObjectsWithTag("Customer");
+            GameObject[] deployedTruck = GameObject.FindGameObjectsWithTag("Truck");
+            foreach (GameObject truck in deployedTruck)
             {
-
-                creditTimer = 0;
-                GameObject.Find("homeBase").GetComponent<MoneyHandler>().credits += 1;
-            }
+                foreach (GameObject target in customers)
+                {
+                    float distance = Vector3.Distance(truck.transform.position, target.transform.position);
+                    if (distance < 40)
+                    {
+                        creditTimer += 1;
+                    }
+                    if (creditTimer == 1000)
+                    {
+                        GameObject.Find("homeBase").GetComponent<MoneyHandler>().credits += 1;
+                        creditTimer = 0;
+                    }
+                }
+            }        
+            canMove = false;
         }
-
+        //end rob kustom kode
 
         if (Input.GetKeyDown (KeyCode.D) && !isMoving) {
 			canMove = !canMove;
