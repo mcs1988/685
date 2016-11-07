@@ -40,10 +40,16 @@ public class MoveToClickPoint : MonoBehaviour {
 				Ray screenRay = Camera.main.ScreenPointToRay (Input.mousePosition);
 
 				RaycastHit hit;
+<<<<<<< HEAD
 				if (Physics.Raycast (screenRay, out hit, Mathf.Infinity)) {
 
 					Debug.Log ("hit collider tag = " + hit.collider.tag);
 					if(!hit.collider.tag.Equals("Truck")){
+=======
+
+				if (Physics.Raycast (screenRay, out hit, Mathf.Infinity)) {
+					if (!hit.collider.tag.Equals ("Truck")) {
+>>>>>>> ed9f2443d9d7ac14b164aec33d1ef972fac3a773
 						isMoving = true;
 						changeTruckColor (Color.yellow);
 						agent.destination = hit.point;
@@ -51,7 +57,11 @@ public class MoveToClickPoint : MonoBehaviour {
 				}
 			}
 
+<<<<<<< HEAD
 			if (agent.nextPosition == agent.destination && agent.velocity == new Vector3(0, 0, 0)) {
+=======
+			if (agent.nextPosition == agent.destination && agent.velocity.magnitude == 0.0f) {
+>>>>>>> ed9f2443d9d7ac14b164aec33d1ef972fac3a773
 				isMoving = false;
 				changeTruckColor(Color.green);
 			}

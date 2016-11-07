@@ -26,7 +26,6 @@ public class MoveOnEdgeCursor : MonoBehaviour {
         if (Input.GetMouseButton(1))
         {
             speed = rightClickSpeed;
-            Debug.Log("Pressed left click.");
         }
         else
         {
@@ -61,8 +60,6 @@ public class MoveOnEdgeCursor : MonoBehaviour {
 				transform.position = new Vector3 (transform.position.x, transform.position.y - (speed * Time.deltaTime), transform.position.z);
 			}
 		}
-
-			
 	}
 
 	void OnGUI () {
