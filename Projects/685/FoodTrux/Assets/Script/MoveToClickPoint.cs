@@ -16,6 +16,9 @@ public class MoveToClickPoint : MonoBehaviour {
 	public float rotateSpeed = 250f;   // speed at which character will rotate
 	public float stopDistance = 3f; // stop moving when closer to stopDistance
 
+    int creditTimer = 0; //Temp Variable to Simulate Income
+   
+
 	private Quaternion targetRotation;
 
 	void Start () 
@@ -24,7 +27,7 @@ public class MoveToClickPoint : MonoBehaviour {
 		destinationPosition = myTransform.position; // initialize destinationPosition
 		agent = gameObject.GetComponent<NavMeshAgent>();
 		changeTruckColor (Color.green);
-	}
+    }
 
 //	void Update()
 //	{
@@ -82,6 +85,18 @@ public class MoveToClickPoint : MonoBehaviour {
 				changeTruckColor(Color.green);
 			}
 		}
+        else
+        {
+            //robs kustom editz
+            creditTimer += 1;
+
+            if (creditTimer == 59)
+            {
+
+                creditTimer = 0;
+                GameObject.Find("homeBase").GetComponent<MoneyHandler>().credits += 1;
+            }
+        }
 		
 		if (Input.GetKeyDown (KeyCode.D) && !isMoving) {
 			canMove = !canMove;
