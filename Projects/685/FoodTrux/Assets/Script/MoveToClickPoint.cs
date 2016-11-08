@@ -5,9 +5,10 @@ public class MoveToClickPoint : MonoBehaviour
 {
     public Transform destination;
     public bool canMove = true;
-    public bool isMoving = false;
+	public bool isMoving = false;
+	public bool isSelected = false;
 
-    private NavMeshAgent agent;
+    private UnityEngine.AI.NavMeshAgent agent;
     private int layerMask;
 
     private Transform myTransform; //this transform
@@ -27,7 +28,7 @@ public class MoveToClickPoint : MonoBehaviour
     {
         myTransform = transform;   // cache transform to improve performance
         destinationPosition = myTransform.position; // initialize destinationPosition
-        agent = gameObject.GetComponent<NavMeshAgent>();
+        agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
         changeTruckColor(Color.green);
 
         layerMask = ~(1 << 8);
@@ -35,7 +36,7 @@ public class MoveToClickPoint : MonoBehaviour
 
     void Update()
     {
-        if (canMove)
+		if (canMove && isSelected)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -45,8 +46,6 @@ public class MoveToClickPoint : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(screenRay, out hit, Mathf.Infinity))
                 {
-
-                    Debug.Log("hit collider tag = " + hit.collider.tag);
                     if (!hit.collider.tag.Equals("Truck"))
                     {
                         isMoving = true;
@@ -83,21 +82,26 @@ public class MoveToClickPoint : MonoBehaviour
                     }
                 }
             }
-            canMove = false;
+            //canMove = false; Reason for this?
         }
         //end rob kustom kode
 
-        if (Input.GetKeyDown(KeyCode.D) && !isMoving)
+		if (Input.GetKeyDown(KeyCode.D) && !isMoving && isSelected)
         {
             canMove = !canMove;
             changeTruckColor(Color.red);
         }
-        else if (Input.GetKeyDown(KeyCode.D) && !canMove)
+		else if (Input.GetKeyDown(KeyCode.D) && !canMove && isSelected)
         {
             canMove = !canMove;
             changeTruckColor(Color.green);
         }
     }
+
+	void OnMouseUpAsButton() {
+		isSelected = !isSelected;
+		truckIsSelected ();
+	}
 
     //	void Update () {
     //		if (canMove) {
@@ -148,19 +152,38 @@ public class MoveToClickPoint : MonoBehaviour
     //		}
     //	}//end update
 
-    void changeTruckColor(Color color)
-    {
-        GameObject[] trucks = GameObject.FindGameObjectsWithTag("Truck");
-        foreach (GameObject truck in trucks)
-        {
-            MeshRenderer[] renderers = truck.GetComponentsInChildren<MeshRenderer>();
-            foreach (MeshRenderer r in renderers)
-            {
-                foreach (Material m in r.materials)
-                {
-                    m.color = color;
-                }
-            }
-        }
-    }
+	void changeTruckColor(Color color)
+	{
+		GameObject[] trucks = GameObject.FindGameObjectsWithTag("Truck");
+		foreach (GameObject truck in trucks)
+		{
+			MeshRenderer[] renderers = truck.GetComponentsInChildren<MeshRenderer>();
+			foreach (MeshRenderer r in renderers)
+			{
+				foreach (Material m in r.materials)
+				{
+					m.color = color;
+				}
+			}
+		}
+	}
+
+	void truckIsSelected()
+	{
+		GameObject[] trucks = GameObject.FindGameObjectsWithTag("Truck");
+		foreach (GameObject truck in trucks)
+		{
+			MeshRenderer[] renderers = truck.GetComponentsInChildren<MeshRenderer>();
+			foreach (MeshRenderer r in renderers)
+			{
+				foreach (Material m in r.materials)
+				{
+					Color color = m.GetColor ("_OutlineColor");
+					color.a = isSelected ? 255.0f : 0.0f;
+					m.SetColor ("_OutlineColor", color);
+
+				}
+			}
+		}
+	}
 }
