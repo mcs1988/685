@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Material_001
-  m_Shader: {fileID: 4800000, guid: 1046cb6ab63ed58469ff5c4dd7c707da, type: 3}
+  m_Shader: {fileID: 4800000, guid: 548994f4834c8104e9d8284c7d795110, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
@@ -108,7 +108,7 @@ Material:
       second: 0.02
     - first:
         name: _Scale
-      second: 100000
+      second: 10
     - first:
         name: _SmoothnessTextureChannel
       second: 0

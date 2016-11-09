@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Truck
-  - Ground
   - Customer
   layers:
   - Default
@@ -16,7 +15,7 @@ TagManager:
   - UI
   - 
   - 
-  - Truck Layer
+  - Player
   - 
   - 
   - 

@@ -8,11 +8,10 @@ public class MoveToClickPoint : MonoBehaviour
 	public bool isMoving = false;
 	public bool isSelected = false;
 
-    private UnityEngine.AI.NavMeshAgent agent;
-    private int layerMask;
+    private UnityEngine.NavMeshAgent agent;
 
     private Transform myTransform; //this transform
-    private Vector3 destinationPosition;   //destination position
+    //private Vector3 destinationPosition;   //destination position
     private float destinationDistance;     //distance to destination
 
     public float moveSpeed = 25.0f;    // controls character move speed
@@ -27,15 +26,20 @@ public class MoveToClickPoint : MonoBehaviour
     void Start()
     {
         myTransform = transform;   // cache transform to improve performance
-        destinationPosition = myTransform.position; // initialize destinationPosition
-        agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        //destinationPosition = myTransform.position; // initialize destinationPosition
+        agent = gameObject.GetComponent<UnityEngine.NavMeshAgent>();
         changeTruckColor(Color.green);
-
-        layerMask = ~(1 << 8);
     }
 
     void Update()
-    {
+	{
+		if (agent.nextPosition == agent.destination && agent.velocity == new Vector3(0, 0, 0))
+		{
+			isMoving = false;
+			if(canMove)
+				changeTruckColor(Color.green);
+		}
+
 		if (canMove && isSelected)
         {
             if (Input.GetMouseButtonDown(0))
@@ -50,15 +54,14 @@ public class MoveToClickPoint : MonoBehaviour
                     {
                         isMoving = true;
                         changeTruckColor(Color.yellow);
-                        agent.destination = hit.point;
+						if(hit.collider.tag.Equals("Respawn")){
+							
+						}
+						else{
+                        	agent.destination = hit.point;
+						}
                     }
                 }
-            }
-
-            if (agent.nextPosition == agent.destination && agent.velocity == new Vector3(0, 0, 0))
-            {
-                isMoving = false;
-                changeTruckColor(Color.green);
             }
         }
         else
