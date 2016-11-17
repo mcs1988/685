@@ -4,6 +4,7 @@ using UnityEngine;
 public class MoveToClickPoint : MonoBehaviour
 {
     public Transform destination;
+	public Canvas canvas;
     public bool canMove = true;
 	public bool isMoving = false;
 	public bool isSelected = false;
@@ -29,6 +30,8 @@ public class MoveToClickPoint : MonoBehaviour
         //destinationPosition = myTransform.position; // initialize destinationPosition
         agent = gameObject.GetComponent<UnityEngine.NavMeshAgent>();
         changeTruckColor(Color.green);
+		canvas = gameObject.GetComponentInChildren<Canvas> ();
+		canvas.enabled = false;
     }
 
     void Update()
@@ -173,6 +176,7 @@ public class MoveToClickPoint : MonoBehaviour
 
 	void truckIsSelected()
 	{
+		canvas.enabled = !canvas.enabled;
 		GameObject[] trucks = GameObject.FindGameObjectsWithTag("Truck");
 		foreach (GameObject truck in trucks)
 		{
