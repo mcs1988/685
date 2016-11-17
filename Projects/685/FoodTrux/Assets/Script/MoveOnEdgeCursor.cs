@@ -43,23 +43,23 @@ public class MoveOnEdgeCursor : MonoBehaviour {
 			lastPosition = Input.mousePosition;
 		}
 
-		if (!Input.GetMouseButton (2)) {
-			if (Input.mousePosition.x > theScreenWidth - boundary) {
-				transform.position = new Vector3 (transform.position.x + (speed * Time.deltaTime), transform.position.y, transform.position.z);
-			}
-
-			if (Input.mousePosition.x < boundary) {
-				transform.position = new Vector3 (transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
-			}
-
-			if (Input.mousePosition.y > theScreenHeight - boundary) {
-				transform.position = new Vector3 (transform.position.x, transform.position.y + (speed * Time.deltaTime), transform.position.z);
-			}
-
-			if (Input.mousePosition.y < boundary) {
-				transform.position = new Vector3 (transform.position.x, transform.position.y - (speed * Time.deltaTime), transform.position.z);
-			}
-		}
+//		if (!Input.GetMouseButton (2)) {
+//			if (Input.mousePosition.x > theScreenWidth - boundary) {
+//				transform.position = new Vector3 (transform.position.x + (speed * Time.deltaTime), transform.position.y, transform.position.z);
+//			}
+//
+//			if (Input.mousePosition.x < boundary) {
+//				transform.position = new Vector3 (transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
+//			}
+//
+//			if (Input.mousePosition.y > theScreenHeight - boundary) {
+//				transform.position = new Vector3 (transform.position.x, transform.position.y + (speed * Time.deltaTime), transform.position.z);
+//			}
+//
+//			if (Input.mousePosition.y < boundary) {
+//				transform.position = new Vector3 (transform.position.x, transform.position.y - (speed * Time.deltaTime), transform.position.z);
+//			}
+//		}
 	}
 
 	void OnGUI () {

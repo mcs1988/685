@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class MoveToClickPoint : MonoBehaviour
 {
-    public Transform destination;
+    //public Transform destination;
 	public Canvas canvas;
     public bool canMove = true;
 	public bool isMoving = false;
 	public bool isSelected = false;
+	public bool inGarage = true;
 
     private UnityEngine.NavMeshAgent agent;
 
@@ -22,16 +23,16 @@ public class MoveToClickPoint : MonoBehaviour
     int creditTimer = 0; //Temp Variable to Simulate Income
 
 
-    private Quaternion targetRotation;
+    //private Quaternion targetRotation;
 
     void Start()
     {
-        myTransform = transform;   // cache transform to improve performance
+        //myTransform = transform;   // cache transform to improve performance
         //destinationPosition = myTransform.position; // initialize destinationPosition
         agent = gameObject.GetComponent<UnityEngine.NavMeshAgent>();
-        changeTruckColor(Color.green);
-		canvas = gameObject.GetComponentInChildren<Canvas> ();
+        changeTruckColor(Color.yellow);
 		canvas.enabled = false;
+		LeaveGarage ();
     }
 
     void Update()
@@ -39,8 +40,12 @@ public class MoveToClickPoint : MonoBehaviour
 		if (agent.nextPosition == agent.destination && agent.velocity == new Vector3(0, 0, 0))
 		{
 			isMoving = false;
-			if(canMove)
-				changeTruckColor(Color.green);
+			if (canMove)
+				changeTruckColor (Color.green);
+			else if (inGarage) {
+				canMove = true;
+				changeTruckColor (Color.green);
+			}
 		}
 
 		if (canMove && isSelected)
@@ -97,7 +102,7 @@ public class MoveToClickPoint : MonoBehaviour
             canMove = !canMove;
             changeTruckColor(Color.red);
         }
-		else if (Input.GetKeyDown(KeyCode.D) && !canMove && isSelected)
+		else if (Input.GetKeyDown(KeyCode.D) && !isMoving && !canMove && isSelected)
         {
             canMove = !canMove;
             changeTruckColor(Color.green);
@@ -192,5 +197,13 @@ public class MoveToClickPoint : MonoBehaviour
 				}
 			}
 		}
+	}
+
+	void LeaveGarage()
+	{
+		isMoving = true;
+		canMove = false;
+		GameObject dest = GameObject.FindGameObjectWithTag ("LeaveGarageDestination");
+		agent.destination = dest.transform.position;
 	}
 }
