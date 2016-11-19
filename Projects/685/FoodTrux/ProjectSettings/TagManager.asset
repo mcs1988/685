@@ -8,6 +8,9 @@ TagManager:
   - Customer
   - LeaveGarageDestination
   - ReturnHome
+  - Truck2
+  - Selected
+  - Unselected
   layers:
   - Default
   - TransparentFX

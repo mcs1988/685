@@ -21,6 +21,7 @@ public class MoveToClickPoint : MonoBehaviour
     public float stopDistance = 3f; // stop moving when closer to stopDistance
 
     int creditTimer = 0; //Temp Variable to Simulate Income
+	public int attractionRadius; //What range customers will be attracted to your Truck
 
 
     //private Quaternion targetRotation;
@@ -32,6 +33,7 @@ public class MoveToClickPoint : MonoBehaviour
         agent = gameObject.GetComponent<UnityEngine.NavMeshAgent>();
         changeTruckColor(Color.yellow);
 		canvas.enabled = false;
+		if(inGarage)
 		LeaveGarage ();
     }
 
@@ -45,6 +47,7 @@ public class MoveToClickPoint : MonoBehaviour
 			else if (inGarage) {
 				canMove = true;
 				changeTruckColor (Color.green);
+				inGarage = false;
 			}
 		}
 
@@ -82,7 +85,7 @@ public class MoveToClickPoint : MonoBehaviour
                 foreach (GameObject target in customers)
                 {
                     float distance = Vector3.Distance(truck.transform.position, target.transform.position);
-                    if (distance < 40)
+                    if (distance < attractionRadius)
                     {
                         creditTimer += 1;
                     }
@@ -112,6 +115,7 @@ public class MoveToClickPoint : MonoBehaviour
 	void OnMouseUpAsButton() {
 		isSelected = !isSelected;
 		truckIsSelected ();
+		gameObject.tag = "Unselected";
 	}
 
     //	void Update () {
@@ -165,7 +169,7 @@ public class MoveToClickPoint : MonoBehaviour
 
 	void changeTruckColor(Color color)
 	{
-		GameObject[] trucks = GameObject.FindGameObjectsWithTag("Truck");
+		GameObject[] trucks = GameObject.FindGameObjectsWithTag("Selected");
 		foreach (GameObject truck in trucks)
 		{
 			MeshRenderer[] renderers = truck.GetComponentsInChildren<MeshRenderer>();
@@ -181,8 +185,9 @@ public class MoveToClickPoint : MonoBehaviour
 
 	void truckIsSelected()
 	{
+		gameObject.tag = "Selected";
 		canvas.enabled = !canvas.enabled;
-		GameObject[] trucks = GameObject.FindGameObjectsWithTag("Truck");
+		GameObject[] trucks = GameObject.FindGameObjectsWithTag("Selected");
 		foreach (GameObject truck in trucks)
 		{
 			MeshRenderer[] renderers = truck.GetComponentsInChildren<MeshRenderer>();
