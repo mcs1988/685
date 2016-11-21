@@ -20,8 +20,13 @@ public class MoveToClickPoint : MonoBehaviour
     public float rotateSpeed = 250f;   // speed at which character will rotate
     public float stopDistance = 3f; // stop moving when closer to stopDistance
 
-    int creditTimer = 0; //Temp Variable to Simulate Income
+    int creditTimer; //Temp Variable to Simulate Income
+	public int incomeRate; //Rate at which credits increase (smaller is faster)
 	public int attractionRadius; //What range customers will be attracted to your Truck
+
+	public int idNum; //truck ID #
+
+	public bool isDeployed = false; // is it deployed?
 
 
     //private Quaternion targetRotation;
@@ -35,10 +40,13 @@ public class MoveToClickPoint : MonoBehaviour
 		canvas.enabled = false;
 		if(inGarage)
 		LeaveGarage ();
+
+		creditTimer = 0;
     }
 
     void Update()
 	{
+		
 		if (agent.nextPosition == agent.destination && agent.velocity == new Vector3(0, 0, 0))
 		{
 			isMoving = false;
@@ -75,47 +83,62 @@ public class MoveToClickPoint : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            //robs kustom editz
+
+		if (Input.GetKeyDown(KeyCode.D) && isSelected && !isDeployed && !isMoving)
+		{
+			canMove = false;
+			isDeployed = true;
+
+			//Debug.Log (isDeployed + "Truck" + idNum + "has been deployed");
+		}
+		else if (Input.GetKeyDown(KeyCode.D) && !isMoving && !canMove && isSelected)
+		{
+			
+			canMove = true;
+			isDeployed = false;
+			changeTruckColor(Color.green);
+
+			//Debug.Log (isDeployed + "Truck" + idNum + "has been undeployed");
+		}
+
+		//robs kustom editz
+		//if truck is deployed, then income increases for each customer in vicinity @ 1/incomeRate.
+		//incomeRate is how many frames equal a tick on an arbitrary income timer
+
+		if(isDeployed)
+		{
+			changeTruckColor(Color.red);
             GameObject[] customers = GameObject.FindGameObjectsWithTag("Customer");
-            GameObject[] deployedTruck = GameObject.FindGameObjectsWithTag("Truck");
-            foreach (GameObject truck in deployedTruck)
-            {
-                foreach (GameObject target in customers)
+            //GameObject[] deployedTruck = GameObject.FindGameObjectsWithTag("Truck");
+			GameObject deployedTruck = GameObject.Find("Truck"+idNum);
+
+			canMove = false; //Reason for this?
+
+			//Debug.Log(deployedTruck + "Deployed: " + isDeployed);
+
+			foreach (GameObject target in customers)
                 {
-                    float distance = Vector3.Distance(truck.transform.position, target.transform.position);
+				
+				float distance = Vector3.Distance(deployedTruck.transform.position, target.transform.position);
                     if (distance < attractionRadius)
                     {
                         creditTimer += 1;
                     }
-                    if (creditTimer == 1000)
+                    if (creditTimer == incomeRate)
                     {
                         GameObject.Find("homeBase").GetComponent<MoneyHandler>().credits += 1;
+					Debug.Log ("Credit Added from Truck " + idNum);
                         creditTimer = 0;
                     }
                 }
             }
-            //canMove = false; Reason for this?
-        }
-        //end rob kustom kode
-
-		if (Input.GetKeyDown(KeyCode.D) && !isMoving && isSelected)
-        {
-            canMove = !canMove;
-            changeTruckColor(Color.red);
-        }
-		else if (Input.GetKeyDown(KeyCode.D) && !isMoving && !canMove && isSelected)
-        {
-            canMove = !canMove;
-            changeTruckColor(Color.green);
-        }
+//        //end rob kustom kode
     }
 
 	void OnMouseUpAsButton() {
 		isSelected = !isSelected;
 		truckIsSelected ();
-		gameObject.tag = "Unselected";
+		//gameObject.tag = "Unselected";
 	}
 
     //	void Update () {
@@ -169,28 +192,24 @@ public class MoveToClickPoint : MonoBehaviour
 
 	void changeTruckColor(Color color)
 	{
-		GameObject[] trucks = GameObject.FindGameObjectsWithTag("Selected");
-		foreach (GameObject truck in trucks)
-		{
-			MeshRenderer[] renderers = truck.GetComponentsInChildren<MeshRenderer>();
+		GameObject activeTruck = GameObject.Find("Truck"+idNum);
+
+			MeshRenderer[] renderers = activeTruck.GetComponentsInChildren<MeshRenderer>();
 			foreach (MeshRenderer r in renderers)
 			{
 				foreach (Material m in r.materials)
 				{
 					m.color = color;
 				}
-			}
 		}
 	}
 
 	void truckIsSelected()
 	{
-		gameObject.tag = "Selected";
 		canvas.enabled = !canvas.enabled;
-		GameObject[] trucks = GameObject.FindGameObjectsWithTag("Selected");
-		foreach (GameObject truck in trucks)
-		{
-			MeshRenderer[] renderers = truck.GetComponentsInChildren<MeshRenderer>();
+		GameObject selected = GameObject.Find("Truck"+idNum);
+
+			MeshRenderer[] renderers = selected.GetComponentsInChildren<MeshRenderer>();
 			foreach (MeshRenderer r in renderers)
 			{
 				foreach (Material m in r.materials)
@@ -201,7 +220,6 @@ public class MoveToClickPoint : MonoBehaviour
 
 				}
 			}
-		}
 	}
 
 	void LeaveGarage()

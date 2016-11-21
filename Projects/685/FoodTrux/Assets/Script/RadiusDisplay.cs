@@ -4,7 +4,8 @@ using System.Collections;
 [RequireComponent(typeof(LineRenderer))]
 public class RadiusDisplay : MonoBehaviour
 {
-	bool isSelected;
+	//bool isSelected;
+	public Canvas canvas;
 
     [Range(0.1f, 100f)]
     public float radius = 1.0f;
@@ -20,9 +21,7 @@ public class RadiusDisplay : MonoBehaviour
 	void Update()
 	{
 
-		isSelected = GameObject.Find("Truck").GetComponent<MoveToClickPoint>().isSelected;
-
-		if (isSelected) {
+		if (canvas.enabled) {
 			DoRenderer ();
 		} 
 		else
