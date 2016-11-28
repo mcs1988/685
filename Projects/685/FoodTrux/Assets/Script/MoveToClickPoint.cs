@@ -38,7 +38,12 @@ public class MoveToClickPoint : MonoBehaviour
         agent = gameObject.GetComponent<UnityEngine.NavMeshAgent>();
         changeTruckColor(Color.yellow);
 		canvas.enabled = false;
-		if(inGarage)
+
+
+        isSelected = false;
+        
+
+        if (inGarage)
 		LeaveGarage ();
 
 		creditTimer = 0;
@@ -207,19 +212,22 @@ public class MoveToClickPoint : MonoBehaviour
 	void truckIsSelected()
 	{
 		canvas.enabled = !canvas.enabled;
-		GameObject selected = GameObject.Find("Truck"+idNum);
 
-			MeshRenderer[] renderers = selected.GetComponentsInChildren<MeshRenderer>();
-			foreach (MeshRenderer r in renderers)
-			{
-				foreach (Material m in r.materials)
-				{
-					Color color = m.GetColor ("_OutlineColor");
-					color.a = isSelected ? 255.0f : 0.0f;
-					m.SetColor ("_OutlineColor", color);
+  
+            GameObject selected = GameObject.Find("Truck" + idNum);
 
-				}
-			}
+            MeshRenderer[] renderers = selected.GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer r in renderers)
+            {
+                foreach (Material m in r.materials)
+                {
+                    Color color = m.GetColor("_OutlineColor");
+                    color.a = isSelected ? 255.0f : 0.0f;
+                    m.SetColor("_OutlineColor", color);
+
+                }
+            }
+        
 	}
 
 	void LeaveGarage()

@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45082772, g: 0.49851072, b: 0.56302905, a: 1}
+  m_IndirectSpecularColor: {r: 0.4508279, g: 0.49851114, b: 0.56302965, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -481,12 +481,12 @@ GameObject:
   - 195: {fileID: 242390598}
   - 114: {fileID: 242390597}
   m_Layer: 0
-  m_Name: Truck2
+  m_Name: Truck2(TESTTRUCK)
   m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &242390597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -812,7 +812,7 @@ GameObject:
   - 64: {fileID: 404559191}
   m_Layer: 0
   m_Name: Torus.000
-  m_TagString: Truck2
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1620,7 +1620,7 @@ GameObject:
   - 64: {fileID: 849820510}
   m_Layer: 0
   m_Name: Cube.002
-  m_TagString: Truck2
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1946,7 +1946,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8ebd88e2a705d40a3997892d7d6a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  credits: 0
+  credits: 1000
+  truckCount: 0
 --- !u!4 &947498850 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 8e300c8b023fb834dac783dc7aef3996, type: 3}
@@ -2247,7 +2248,7 @@ GameObject:
   - 64: {fileID: 1022435634}
   m_Layer: 0
   m_Name: Cube.001
-  m_TagString: Truck2
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2501,7 +2502,7 @@ GameObject:
   - 64: {fileID: 1113598458}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Truck2
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2932,7 +2933,7 @@ GameObject:
   - 64: {fileID: 1364349432}
   m_Layer: 0
   m_Name: Grid
-  m_TagString: Truck2
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3087,7 +3088,7 @@ GameObject:
   - 64: {fileID: 1476080750}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Truck2
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3485,6 +3486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yourButton: {fileID: 1572420175}
+  truckNumID: 0
 --- !u!4 &1594364434 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000013768076054, guid: 90ec4f2428a7d864a9b406d9a905883e,
@@ -3508,7 +3510,7 @@ GameObject:
   - 64: {fileID: 1627286521}
   m_Layer: 0
   m_Name: Torus.001
-  m_TagString: Truck2
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3933,7 +3935,7 @@ GameObject:
   - 64: {fileID: 1798607779}
   m_Layer: 0
   m_Name: Torus.004
-  m_TagString: Truck2
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4403,7 +4405,7 @@ GameObject:
   - 64: {fileID: 1911486519}
   m_Layer: 0
   m_Name: Torus.002
-  m_TagString: Truck2
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4821,7 +4823,7 @@ GameObject:
   - 64: {fileID: 2146372283}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Truck2
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
