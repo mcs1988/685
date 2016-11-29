@@ -39,14 +39,35 @@ public class MoveToClickPoint : MonoBehaviour
         changeTruckColor(Color.yellow);
 		canvas.enabled = false;
 
-
+       
         isSelected = false;
+        isDeployed = false; 
         
 
         if (inGarage)
 		LeaveGarage ();
 
 		creditTimer = 0;
+
+        //
+        //
+        //
+
+        GameObject selected = GameObject.Find("Truck" + idNum);
+        MeshRenderer[] renderers = selected.GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer r in renderers)
+        {
+            foreach (Material m in r.materials)
+            {
+                Color color = m.GetColor("_OutlineColor");
+                color.a = isSelected ? 255.0f : 0.0f;
+                m.SetColor("_OutlineColor", color);
+            }
+        }
+
+        //
+        //
+        //
     }
 
     void Update()
@@ -216,6 +237,8 @@ public class MoveToClickPoint : MonoBehaviour
   
             GameObject selected = GameObject.Find("Truck" + idNum);
 
+        Debug.Log(selected.name + "has been selected.");
+
             MeshRenderer[] renderers = selected.GetComponentsInChildren<MeshRenderer>();
             foreach (MeshRenderer r in renderers)
             {
@@ -224,7 +247,6 @@ public class MoveToClickPoint : MonoBehaviour
                     Color color = m.GetColor("_OutlineColor");
                     color.a = isSelected ? 255.0f : 0.0f;
                     m.SetColor("_OutlineColor", color);
-
                 }
             }
         
