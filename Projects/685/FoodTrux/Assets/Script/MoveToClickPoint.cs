@@ -31,8 +31,16 @@ public class MoveToClickPoint : MonoBehaviour
 
     //private Quaternion targetRotation;
 
+        void Awake()
+    {
+        Debug.Log("Awake Happened.");
+    }
+
     void Start()
     {
+
+        Debug.Log("Start Happened.");
+
         //myTransform = transform;   // cache transform to improve performance
         //destinationPosition = myTransform.position; // initialize destinationPosition
         agent = gameObject.GetComponent<UnityEngine.NavMeshAgent>();
@@ -41,7 +49,7 @@ public class MoveToClickPoint : MonoBehaviour
 
        
         isSelected = false;
-        isDeployed = false; 
+        //isDeployed = false; 
         
 
         if (inGarage)

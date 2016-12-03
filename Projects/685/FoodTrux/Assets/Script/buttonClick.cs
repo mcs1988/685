@@ -8,20 +8,25 @@ public class buttonClick : MonoBehaviour {
 
 	//Vector3 spawnPosition = new Vector3 (285.5f, 0f, 440.4f);
     //Sort of in Garage ^^
-    Vector3 spawnPosition = new Vector3(300f, 0f, 440.4f);
+    Vector3 spawnPosition = new Vector3(278f, 0f, 430f);
     private UnityEngine.NavMeshAgent agent;
     public int truckNumID;
+    private GameObject spawnDest;
 
 
 
     void Start () {
 		Button btn = yourButton.GetComponent<Button>();
 		btn.onClick.AddListener(TaskOnClick);
-		//position = transform.position.Set(514.5f,0f,402.4f);
-	}
 
-	void TaskOnClick(){
+        spawnDest = GameObject.FindWithTag("Player");
+        //position = transform.position.Set(514.5f,0f,402.4f);
+    }
+
+	void TaskOnClick()
+    {
 		Debug.Log ("You have clicked the button!");
+
 
 
         truckNumID = GameObject.Find("homeBase").GetComponent<MoneyHandler>().truckCount;
@@ -33,10 +38,18 @@ public class buttonClick : MonoBehaviour {
 
 
         GameObject spawnedTruck = Instantiate(truckToCopy, spawnPosition, transform.rotation) as GameObject;
+        spawnedTruck.transform.Rotate(180,0,0);  //really sloppy solution
+
+
         spawnedTruck.name = "Truck" + truckNumID;
 
         
-        spawnedTruck.GetComponent<MoveToClickPoint>().idNum = truckNumID;
+        spawnedTruck.GetComponent<MoveToClickPoint>().idNum = truckNumID; //gives truck new fresh ID #
+        spawnedTruck.GetComponent<MoveToClickPoint>().isSelected = false;  //sets spawned truck to not selected
+        spawnedTruck.GetComponent<MoveToClickPoint>().isDeployed = false; //sets spawned truck to not deployed
+        spawnedTruck.GetComponent<MoveToClickPoint>().inGarage = true; //sets spawned truck to not deployed
+        //should set to in garage once that is working right
+
 
 
 
