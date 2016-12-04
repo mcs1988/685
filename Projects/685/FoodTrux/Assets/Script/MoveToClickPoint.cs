@@ -80,8 +80,10 @@ public class MoveToClickPoint : MonoBehaviour
 
     void Update()
 	{
-		
-		if (agent.nextPosition == agent.destination && agent.velocity == new Vector3(0, 0, 0))
+        
+
+
+        if (agent.nextPosition == agent.destination && agent.velocity == new Vector3(0, 0, 0))
 		{
 			isMoving = false;
 			if (canMove)
@@ -170,8 +172,30 @@ public class MoveToClickPoint : MonoBehaviour
     }
 
 	void OnMouseUpAsButton() {
-		isSelected = !isSelected;
-		truckIsSelected ();
+        bool isShiftKeyDown = Input.GetKey(KeyCode.LeftShift);
+        if (isShiftKeyDown)
+        {
+            isSelected = !isSelected;
+            truckIsSelected();
+        }
+        else
+        {
+            //kode to unselect all trucks, then reselect current truck
+            Debug.Log("Truck " + idNum + "has been exclusively selected");
+
+
+
+            //GameObject[] truckPool = GameObject.FindGameObjectsWithTag("Truck");
+            //foreach (GameObject leTruck in truckPool)
+            //{
+            //    isSelected =false;
+            //    truckIsSelected();
+            //}
+
+
+
+            // truckNumID = GameObject.Find("homeBase").GetComponent<MoneyHandler>().truckCount;
+        }
 		//gameObject.tag = "Unselected";
 	}
 
@@ -240,8 +264,17 @@ public class MoveToClickPoint : MonoBehaviour
 
 	void truckIsSelected()
 	{
-		canvas.enabled = !canvas.enabled;
 
+        canvas.enabled = !canvas.enabled;
+
+        //if (isSelected)
+        //{
+        //    canvas.enabled = true;
+        //}
+        //else
+        //{
+        //    canvas.enabled = false;
+        //}
   
             GameObject selected = GameObject.Find("Truck" + idNum);
 

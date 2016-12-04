@@ -13,6 +13,9 @@ public class buttonClick : MonoBehaviour {
     public int truckNumID;
     private GameObject spawnDest;
 
+    private int kredits;
+
+    
 
 
     void Start () {
@@ -23,54 +26,66 @@ public class buttonClick : MonoBehaviour {
         //position = transform.position.Set(514.5f,0f,402.4f);
     }
 
-	void TaskOnClick()
+    void TaskOnClick()
     {
-		Debug.Log ("You have clicked the button!");
+
+        kredits = GameObject.Find("homeBase").GetComponent<MoneyHandler>().credits;
+        if (kredits >= 1000)
+        {
+            Debug.Log("You have clicked the button!");
+
+            kredits = kredits - 1000;
+            GameObject.Find("homeBase").GetComponent<MoneyHandler>().credits = kredits;
 
 
 
-        truckNumID = GameObject.Find("homeBase").GetComponent<MoneyHandler>().truckCount;
-        truckNumID += 1;
-
-        
-
-        GameObject truckToCopy= GameObject.Find("Truck1");
-
-
-        GameObject spawnedTruck = Instantiate(truckToCopy, spawnPosition, transform.rotation) as GameObject;
-        spawnedTruck.transform.Rotate(180,0,0);  //really sloppy solution
-
-
-        spawnedTruck.name = "Truck" + truckNumID;
-
-        
-        spawnedTruck.GetComponent<MoveToClickPoint>().idNum = truckNumID; //gives truck new fresh ID #
-        spawnedTruck.GetComponent<MoveToClickPoint>().isSelected = false;  //sets spawned truck to not selected
-        spawnedTruck.GetComponent<MoveToClickPoint>().isDeployed = false; //sets spawned truck to not deployed
-        spawnedTruck.GetComponent<MoveToClickPoint>().inGarage = true; //sets spawned truck to not deployed
-        //should set to in garage once that is working right
+            truckNumID = GameObject.Find("homeBase").GetComponent<MoneyHandler>().truckCount;
+            truckNumID += 1;
 
 
 
-
-        string truckName = spawnedTruck.name;
-
-        Debug.Log("Just Spawned Truck " + truckNumID);
-        Debug.Log("Truck's Name: " + truckName);
-
-        // GameObject.Find("Truck3").GetComponent<MoveToClickPoint>().inGarage = true;
+            GameObject truckToCopy = GameObject.Find("Truck1");
 
 
+            GameObject spawnedTruck = Instantiate(truckToCopy, spawnPosition, transform.rotation) as GameObject;
+            spawnedTruck.transform.Rotate(180, 0, 0);  //really sloppy solution
 
-        //*
-        //Attempt to Rip from Leave Garage
 
-        //GameObject dest = GameObject.FindGameObjectWithTag("LeaveGarageDestination");
-        //agent.destination = dest.transform.position;
+            spawnedTruck.name = "Truck" + truckNumID;
 
-        //*
 
-        //Object.Instantiate(truckToCopy, position, Quaternion.identity);
+            spawnedTruck.GetComponent<MoveToClickPoint>().idNum = truckNumID; //gives truck new fresh ID #
+            spawnedTruck.GetComponent<MoveToClickPoint>().isSelected = false;  //sets spawned truck to not selected
+            spawnedTruck.GetComponent<MoveToClickPoint>().isDeployed = false; //sets spawned truck to not deployed
+            spawnedTruck.GetComponent<MoveToClickPoint>().inGarage = true; //sets spawned truck to not deployed
+                                                                           //should set to in garage once that is working right
+
+
+
+
+            string truckName = spawnedTruck.name;
+
+            Debug.Log("Just Spawned Truck " + truckNumID);
+            Debug.Log("Truck's Name: " + truckName);
+
+            // GameObject.Find("Truck3").GetComponent<MoveToClickPoint>().inGarage = true;
+
+
+
+            //*
+            //Attempt to Rip from Leave Garage
+
+            //GameObject dest = GameObject.FindGameObjectWithTag("LeaveGarageDestination");
+            //agent.destination = dest.transform.position;
+
+            //*
+
+            //Object.Instantiate(truckToCopy, position, Quaternion.identity);
+        }
+        else
+        {
+            Debug.Log("Insufcient Funds");
+        }
     }
 
     //void LeaveGarage()

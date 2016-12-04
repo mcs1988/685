@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45082772, g: 0.49851072, b: 0.56302905, a: 1}
+  m_IndirectSpecularColor: {r: 0.4508279, g: 0.49851114, b: 0.56302965, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -4909,7 +4909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9558824, g: 0.028114215, b: 0.028114215, a: 1}
+  m_Color: {r: 0.0984965, g: 0.028114215, b: 0.9558824, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4918,7 +4918,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 24
+    m_FontSize: 20
     m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 2
@@ -4929,9 +4929,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'New
+  m_Text: 'New Truck -
 
-    Truck'
+    1000 Credits'
 --- !u!222 &1972651362
 CanvasRenderer:
   m_ObjectHideFlags: 0

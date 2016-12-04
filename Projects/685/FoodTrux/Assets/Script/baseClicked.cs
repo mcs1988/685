@@ -26,7 +26,7 @@ public class baseClicked : MonoBehaviour {
 		if (isSelected) {
 			canvas.enabled = true;
 			string name = canvas.name;
-			Debug.Log (name);
+			//Debug.Log (name);
 
 		} else {
 			canvas.enabled = false;
