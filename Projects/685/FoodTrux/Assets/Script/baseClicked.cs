@@ -5,7 +5,9 @@ public class baseClicked : MonoBehaviour {
 
 
 	public Canvas canvas;
+
 	bool isSelected = false;
+	protected bool showButton1 = true, showButton2 = true;
 
 	private UnityEngine.NavMeshAgent agent;
 
@@ -13,17 +15,25 @@ public class baseClicked : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-
 	
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
-		if (isSelected)
+		GameObject truckButton = GameObject.FindGameObjectWithTag ("baseMenu");
+
+		if (isSelected) {
 			canvas.enabled = true;
-		else
+			string name = canvas.name;
+			Debug.Log (name);
+
+		} else {
 			canvas.enabled = false;
+
+//			truckButton.gameObject.SetActive (false);
+
+		}
 	}
 
 	void OnMouseUpAsButton() {
@@ -50,5 +60,7 @@ public class baseClicked : MonoBehaviour {
 
 			}
 		}
+		
+
 }
 
