@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class buttonClick : MonoBehaviour {
+public class newTruckButtonClick : MonoBehaviour {
 	public Button yourButton;
 	//public Vector3 spawnPoint = Vector3.zero;
 

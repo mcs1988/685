@@ -185,12 +185,15 @@ public class MoveToClickPoint : MonoBehaviour
 
 
 
-            //GameObject[] truckPool = GameObject.FindGameObjectsWithTag("Truck");
-            //foreach (GameObject leTruck in truckPool)
-            //{
-            //    isSelected =false;
-            //    truckIsSelected();
-            //}
+             GameObject[] truckPool = GameObject.FindGameObjectsWithTag("Truck");
+             foreach (GameObject leTruck in truckPool)
+            {
+
+                string debugName = leTruck.name;
+                Debug.Log(debugName);
+                isSelected =false;
+                truckIsSelected();
+            }
 
 
 
